@@ -1,10 +1,10 @@
 name: 刷步数
-
 on:
   schedule:
     - cron: '37 10,12,14 * * *'
   workflow_dispatch:
-
+permissions:
+  contents: read
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -31,7 +31,6 @@ jobs:
         run: |
           pip3 install -r requirements.txt
           python3 main.py
-
       - name: persist tokens
         run: |
           git config user.name github-actions
